@@ -1,0 +1,21 @@
+@echo off
+
+SET WORKING_COPY_PATH=C:/repositories/
+SET GIT_BARE_PATH=C:/git/
+
+SET CURRENT_PATH=%cd%
+echo Enter Repository Name:
+SET /p REPOSITORY_NAME=%1
+SET REPOSITORY_GIT_NAME=%REPOSITORY_NAME%.git
+
+git init --bare --shared=group %GIT_BARE_PATH%%REPOSITORY_GIT_NAME%
+git clone %GIT_BARE_PATH%%REPOSITORY_GIT_NAME% %WORKING_COPY_PATH%%REPOSITORY_NAME%
+echo # %REPOSITORY_NAME% > %WORKING_COPY_PATH%%REPOSITORY_NAME%/README.md
+
+cd %WORKING_COPY_PATH%%REPOSITORY_NAME%
+git add .
+git commit -m "Initial Commit"
+git push origin master
+cd %CURRENT_PATH%
+
+pause
