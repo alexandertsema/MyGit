@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is small script to set up a local Git server.
+This is a small script to set up a local Git server.
 
 ## Usage
 
